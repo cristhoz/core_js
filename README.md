@@ -15,5 +15,6 @@ __Versión 1.\*.\*:__ Se perdió el norte, se realizó un framework de jQuery, f
 __Versión 0.\*.\*:__ Fue el primer intento dejar atrás jQuery, se fracasó por falta de conocimiento y habilidades técnicas.
 
 ##Créditos
+__[Cristian E. De la Hoz](mailto:me@yocristian.com)__ Desarrollador Web en Netbangers
 
 ##Licencia
