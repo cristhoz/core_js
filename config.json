@@ -1,0 +1,22 @@
+{
+	"version": "3.0.0",
+	"task": ["concat", "uglify"],
+	"uglify": {
+		"options": {
+			"dev": {
+				"sourceMap": false,
+				"mangle": false,
+				"beautify": true,
+				"compress": false,
+				"preserveComments": "all"
+			},
+			"prod": {
+				"sourceMap": false,
+				"preserveComments": "some"
+			}
+		},
+		"dev": true,
+		"prod": false
+	},
+	"watch": true
+}
