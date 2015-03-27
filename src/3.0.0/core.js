@@ -4,9 +4,7 @@
  */
 
 (function(factory) {
-	window.Core = window.Core || {};
-	
-	factory(window.Core);
+	factory(window.Core = {});
 })(function(Core) {
 	'use strict';
 
@@ -1339,5 +1337,3 @@
 		}
 	};
 });
-
-//@prepros-append app.core.extend.js
