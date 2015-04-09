@@ -1,4 +1,5 @@
-(function(Core) {'use strict';Core.fadeIn = function(el, duration, fnEnded, display) {
+(function(Core) {
+'use strict';Core.fadeIn = function(el, duration, fnEnded, display) {
 	var duration = duration || 350;
 
 	el.style.display = display || 'block';
@@ -11,7 +12,8 @@
 			fnEnded();
 		}
 	});
-};Core.fadeOut = function(el, duration, fnEnded) {
+};
+Core.fadeOut = function(el, duration, fnEnded) {
 	var duration = duration || 350;
 
 	el.style.opacity = 1;
@@ -25,7 +27,8 @@
 			fnEnded();
 		}
 	});
-};Core.swipe = function(el, fnEnded, sensitive) {
+};
+Core.swipe = function(el, fnEnded, sensitive) {
 	el = (Core.isString(el)) ? document.querySelector(el) : el;
 
 	if(!Core.isElementHTML(el) || !Core.isFunction(fnEnded)) {
@@ -90,7 +93,7 @@
 		}
 	})();
 };
-Core.alert = function(options) {
+Core.alert = function(options) {
 	var w_alerts = document.querySelector('#site_alert');
 
 	var _callbacks;
@@ -146,7 +149,8 @@
 	return Core.promise(['closed'], function(data) {
 		_callbacks = data;
 	});
-};Core.autocomplete = function(input, array) {
+};
+Core.autocomplete = function(input, array) {
 	input = (Core.isString(input)) ? document.querySelector(input) : input;
 
 	if(!Core.isElementHTML(input)) {
@@ -370,7 +374,8 @@
 	return Core.promise(['blur'], function(data) {
 		_callbacks = data;
 	});
-};Core.calendar = function(input, options) {
+};
+Core.calendar = function(input, options) {
 	input = (Core.isString(input)) ? document.querySelector(input) : input;
 
 	if(!Core.isElementHTML(input)) {
@@ -684,7 +689,8 @@
 		open: _open,
 		close: _close
 	};
-};/**
+};
+/**
  * Basic interactions that must be modal box
  * @param  {Object}   settings adjustments must have the modal box
  * @param  {Function} fnOpen   runs when the modal is opened
@@ -792,7 +798,8 @@ Core.modals = function(settings, fnOpen, fnClose) {
 		open: _open,
 		close: _close
 	};
-};Core.scrollTo = function(y, duration, fnEnded) {
+};
+Core.scrollTo = function(y, duration, fnEnded) {
 	var duration = duration || 350;
 	var el = (document.documentElement.scrollTop) ? document.documentElement : document.body;
 

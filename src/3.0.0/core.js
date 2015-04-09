@@ -759,7 +759,7 @@
 
 	Core.ajax = function(options) {
 		if(!Core.isString(options.url)) {
-			return console.error({ message: 'It requires the URL request' });
+			throw 'It requires the URL request';
 		}
 
 		var _options;
@@ -791,7 +791,7 @@
 					try {
 						response = JSON.parse(response);
 					} catch(e) {
-						console.error('Malformed JSON');
+						throw 'Malformed JSON';
 					}
 				}
 
@@ -933,7 +933,7 @@
 			if(typeof fn === 'function') {
 				fn.apply(fnThis, fnParams);
 			} else {
-				console.error(fnString + ' function does not exist.');
+				throw fnString + ' function does not exist';
 			}
 		};
 
@@ -943,7 +943,7 @@
 				var isHash = /^#[A-Za-z0-9\-\_]/.test(prop);
 
 				if(!/^\//.test(prop) && !/^#/.test(prop)) {
-					console.error(prop + ' is an invalid parameter.');
+					throw prop + ' is an invalid parameter';
 				};
 
 				if((!!pathname || !!hash) && (isPathname || isHash)) {
@@ -1005,8 +1005,7 @@
 		form = (Core.isString(form)) ? document.querySelector(form) : form;
 
 		if(!Core.isElementHTML(form)) {
-			console.error('this form does not exist');
-			return false;
+			throw 'this form does not exist';
 		}
 
 		var obj = {};
@@ -1028,8 +1027,7 @@
 		form = (Core.isString(form)) ? document.querySelector(form) : form;
 
 		if(!Core.isElementHTML(form)) {
-			console.error('this form does not exist');
-			return false;
+			throw 'this form does not exist';
 		}
 
 		for(var prop in data) {
@@ -1047,8 +1045,7 @@
 		form = (Core.isString(form)) ? document.querySelector(form) : form;
 
 		if(!Core.isElementHTML(form)) {
-			console.error('this form does not exist');
-			return false;
+			throw 'this form does not exist';
 		}
 
 		var lenFields = form.length;
@@ -1143,7 +1140,7 @@
 		el = (Core.isString(el)) ? document.querySelector(el) : el;
 
 		if(!Core.isElementHTML(el)) {
-			console.error('this element does not exist');
+			throw 'this element does not exist';
 			return false;
 		}
 

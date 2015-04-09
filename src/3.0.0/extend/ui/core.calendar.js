@@ -2,7 +2,7 @@ Core.calendar = function(input, options) {
 	input = (Core.isString(input)) ? document.querySelector(input) : input;
 
 	if(!Core.isElementHTML(input)) {
-		return console.error('this input does not exist');;
+		throw 'this input does not exist';
 	}
 
 	var _currentDate = new Date();

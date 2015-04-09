@@ -2,7 +2,7 @@ Core.swipe = function(el, fnEnded, sensitive) {
 	el = (Core.isString(el)) ? document.querySelector(el) : el;
 
 	if(!Core.isElementHTML(el) || !Core.isFunction(fnEnded)) {
-		return console.error('Some parameters missing');
+		throw 'Some parameters missing';
 	}
 	var sensitive = sensitive || 50;
 
