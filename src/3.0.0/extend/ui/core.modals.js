@@ -20,7 +20,7 @@ Core.modals = function(settings, fnOpen, fnClose) {
 	var _open = function() {
 		_isModalPrevOpen = (wModal.style.display === 'block');
 		isOpen = true;
-		isNotScroll = body.classList.contains('not_scroll');
+		isNotScroll = Core.cssClass.has(body, 'not_scroll');
 
 		wSection.style.display = 'block';
 
@@ -35,7 +35,7 @@ Core.modals = function(settings, fnOpen, fnClose) {
 		}
 
 		if(!isNotScroll) {
-			body.classList.add('not_scroll');
+			Core.cssClass.add(body, 'not_scroll');
 		}
 	};
 
@@ -47,7 +47,7 @@ Core.modals = function(settings, fnOpen, fnClose) {
 				if(!isNotScroll) {
 					isNotScroll = false;
 
-					body.classList.remove('not_scroll');
+					Core.cssClass.remove(body, 'not_scroll');
 				}
 				
 				wSection.style.display = 'none';

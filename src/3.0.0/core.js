@@ -205,7 +205,7 @@
 		};
 
 		var _valClass = function(value) {
-			return el.classList.contains(value);
+			return Core.cssClass.has(el, value);
 		};
 
 		var _valID = function(value) {
