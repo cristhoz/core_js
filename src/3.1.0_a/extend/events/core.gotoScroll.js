@@ -7,6 +7,10 @@ Core.gotoScroll = function(element, fnChanged) {
 		var href = el.href;
 		href = href.substring(href.indexOf('#'), href.length);
 
+		if(!/^#[\w-]+$/.test(href)) {
+			return;
+		}
+
 		var idElement = document.querySelector(href);
 
 		if(!Core.isElementHTML(idElement)) {

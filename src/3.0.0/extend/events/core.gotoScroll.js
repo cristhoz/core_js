@@ -5,17 +5,24 @@ Core.gotoScroll = function(elList, fnChanged) {
 
 	Array.prototype.forEach.call(elList, function(el, i, ar) {
 		var href = el.href;
-		var idElement = document.querySelector(href.substring(href.indexOf('#'), href.length));
+		href = href.substring(href.indexOf('#'), href.length);
+
+		if(!/^#[\w-]+$/.test(href)) {
+			return;
+		}
+
+		var idElement = document.querySelector(href);
+
+		if(!Core.isElementHTML(idElement)) {
+			Console.error('This element not exists');
+			return;
+		}
 
 		el.addEventListener('click', function(e) {
 			e.preventDefault();
 
-			if(!Core.isElementHTML(idElement)) {
-				return;
-			}
-
 			if(Core.HAS_HISTORY) {
-				history.replaceState({}, '', href);
+				history.replaceState({}, '', el.href);
 			}
 
 			Core.scrollTo(Core.offset(idElement).top, 500);
