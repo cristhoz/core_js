@@ -7,7 +7,7 @@ Por búsqueda en dejar de utilizar los afanados y útiles frameworks, uniéndose
 
 ##Historial
 __Versión 3.1.0_a:__ Se reorganiza los metodos por tipos de usos.
--	Se crea la tipo utils,...
+-	Se crea el tipo utils,...
 -	Se incluye `Core.utils.forEach(ar, fn)`, para dar soporte en forEach en los objetos que sean tipo NodeList.
 
 __Versión 3.0.1:__ Se agregan una funcionalidades necesarias.
