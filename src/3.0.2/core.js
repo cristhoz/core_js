@@ -604,7 +604,7 @@
 	 * @param  {Function} fn function that returns each element
 	 */
 	Core.forEach = function(ar, fn) {
-		if(!Core.isNodeList(ar) || !Core.isArray(ar)) {
+		if(!Core.isNodeList(ar) && !Core.isArray(ar)) {
 			throw 'Element must be type Array or NodeList';
 		}
 
