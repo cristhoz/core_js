@@ -367,7 +367,19 @@
 		return num.toString(16).substring(3);
 	};
 
+	/**
+	 * Get parents DOM of child element.
+	 * @param  {HTMLElement} el       DOM element for search parent
+	 * @param  {String}      validate string name type element
+	 * @return {HTMLElement}          return parent DOM element
+	 */
 	Core.parents = function(el, validate) {
+		if(!Core.isElementHTML(el)) {
+			throw 'Element DOM is required';
+		} else if(!Core.isString(validate)) {
+			throw 'Validate string is required';
+		}
+
 		if(!Core.REG_SELECTOR.test(validate)) {
 			return;
 		}
@@ -383,7 +395,7 @@
 		};
 
 		(function _init() {
-			_find()
+			_find();
 		})();
 
 		return el;
