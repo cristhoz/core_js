@@ -15,6 +15,8 @@ Core.modals = function(settings, fnOpen, fnClose) {
 	var isOpen = false;
 	var isNotScroll = false;
 
+	var body = document.body;
+
 	var idEvtESC;
 
 	var _open = function() {

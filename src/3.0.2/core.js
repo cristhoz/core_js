@@ -305,17 +305,7 @@
 		notEmpty = (Core.isBoolean(notEmpty)) ? notEmpty : true;
 
 		if(Core.getType(value) === '[object Array]') {
-			if(notEmpty) {
-				if(value.length > 0) {
-					for(var i = 0, len = value.length; i < len; i++) {
-						if(!Core.isUndefined(value[i]) || !Core.isNULL(value[i])) {
-							return (value[i].trim() !== '');
-						}
-					}
-				}
-
-				return false;
-			}
+			if(notEmpty) { return value.length > 0; }
 
 			return true;
 		}
@@ -808,13 +798,16 @@
 		var _xhr = function() {
 			var xhr = new XMLHttpRequest();
 
-			xhr.upload.addEventListener('progress', function(e) {
-				if(Core.isFunction(_options.progress)) {
-					_options.progress(e);	
-				}
-			}, false);
+			if(typeof xhr.upload === 'object') {
+				xhr.upload.addEventListener('progress', function(e) {
+					if(Core.isFunction(_options.progress)) {
+						_options.progress(e);	
+					}
+				}, false);
+			}
+			
 			xhr.addEventListener('load', function(e) {
-				var response = e.target.response;
+				var response = e.target.response || xhr.responseText;
 
 				if(options.dataType === 'json') {
 					try {
@@ -894,9 +887,9 @@
 
 			if(Core.isString(hash)) {
 				var inStr = (hash.indexOf('#!') >= 0) ? ((hash.indexOf('#!/') >= 0) ? 3 : 2) : ((hash.indexOf('#/') >= 0) ? 2 : 1);
-				var enStr = (hash.indexOf('/', hash.length - 2) > 0) ? hash.length - 1 : hash.length;
-
+				var enStr = (hash.indexOf('/', hash.length - 1) > 0) ? hash.length - 1 : hash.length;
 				hash = hash.substring(inStr, enStr);
+
 				hash = hash.split('/');
 
 				return hash;
@@ -1323,6 +1316,7 @@
 
 					var isNum = /^[a-z]*:[0-9]*$/.test(value);
 					var isString = /^[a-z]*:[\w-]*$/.test(value);
+					var isArray = /^(array)+\[([\w\|:0-9])+\]$/.test(value);
 
 					if(isNum || isString) {
 						value = value.split(':');
@@ -1334,6 +1328,38 @@
 						}
 						
 						value = value[0];
+					}
+
+					if(isArray) {
+						var values = value.substring(6, value.length - 1);
+						var arrVal = values.split('|');
+
+						for(var a = 0, aLen = arrVal.length; a < aLen; a++) {
+							var aValue = arrVal[a];
+							var aNum = 0;
+							var aString = '';
+
+							var aIsNum = /^[a-z]*:[0-9]*$/.test(value);
+							var aIsString = /^[a-z]*:[\w-]*$/.test(value);
+
+							if(aIsNum || aIsString) {
+								aValue = aValue.split(':');
+
+								if(aIsNum && aIsString) {
+									aNum = aValue[1];
+								} else if(!aIsNum && aIsString) {
+									aString = aValue[1];
+								}
+								
+								aValue = aValue[0];
+							}
+
+							//console.log('Que valide arrays');
+
+							/*if(_validate(value, field, num, string)) {
+								errors.push(value);
+							}*/
+						}
 					}
 
 					if(_validate(value, field, num, string)) {
@@ -1380,5 +1406,12 @@
 				}
 			}
 		}
+	};
+
+	Core.HTMLStringToDOM = function(string) {
+		var el = document.createElement('div');
+		el.innerHTML = string;
+
+		return el.childNodes[0];
 	};
 });

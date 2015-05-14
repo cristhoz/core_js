@@ -32,9 +32,19 @@ Core.autocomplete = function(input, array) {
 		input.addEventListener('focus', function(e) {
 			if(!Core.isElementHTML(w_list) && !Core.isElementHTML(list)) {
 				var computed = window.getComputedStyle(input);
+
+				var width = parseInt(computed.width),
+				    height = parseInt(computed.height),
+				    pTop = parseInt(computed.paddingTop),
+				    pRight = parseInt(computed.paddingRight),
+				    pBottom = parseInt(computed.paddingBottom),
+				    pLeft = parseInt(computed.paddingLeft);
+
 				var offset = Core.offset(input);
-				var top = (parseInt(computed.height) - parseInt(computed.borderBottomWidth)) + (offset.top - parseInt(computed.borderTopWidth));
-				var width = (parseInt(computed.width) - parseInt(computed.borderLeftWidth)) - parseInt(computed.borderRightWidth);
+				var top = (pTop + pBottom + height) + offset.top;
+				var width = ((pRight + pLeft + width) - parseInt(computed.borderLeftWidth)) - parseInt(computed.borderRightWidth);
+
+				console.log(computed.paddingLeft);
 
 				w_list = document.createElement('div');
 				w_list.id = id_autocomplete;

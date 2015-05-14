@@ -38,11 +38,15 @@ Core.alert = function(options) {
 			view.html = options.text;
 		}
 
-		w_alerts.innerHTML = Handlebars.templates.core_alerts(view);
+		w_alerts.innerHTML = Handlebars.templates['ui_core_alerts'](view);
 	};
 
 	var _open = function() {
-		Core.fadeIn(w_alerts, 350);
+		Core.fadeIn(w_alerts, 350, function() {
+			if(Core.isFunction(_callbacks.created)) {
+				_callbacks.created(w_alerts);
+			}
+		});
 	};
 
 	(function _init() {
@@ -51,7 +55,7 @@ Core.alert = function(options) {
 		_open();
 	})();
 
-	return Core.promise(['closed'], function(data) {
+	return Core.promise(['closed', 'created'], function(data) {
 		_callbacks = data;
 	});
 };

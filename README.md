@@ -17,6 +17,18 @@ __Versión 3.0.2:__ Se agregan una funcionalidades necesarias.
 -	Se ajusta `Core.routes(routes, options)`.
 	-	Se agrega soporte a los hash.
 	-	Se desarrolla el watch con soporte solo a los hashchange.
+-	Se agrego validaciones a `Core.parents(el, validate)`.
+-	Extención para crear el DOM para audio y video HTML `Core.insertMedia(options)`.
+-	Se corrigen varios errores:
+	-	Se ajusta las validación "notEmpty" en `Core.isArray(value, notEmpty)`.
+	-	Se corrige la validaciones en `Core.forEach(ar, fn)`.
+	-	Se corrige un error con las validaciones con hash en `Core.getDataURL(ar, fn)`.
+	-	Correción de error en IE9 con el metodo `Core.ajax(options)`.
+	-	Se corrige error en la posición padding en `Core.autocomplete(input, array)`.
+	-	Se corrige errores en `Core.modals(settings, fnOpen, fnClose)`.
+-	Se comenzo a realizar la validación con Array en `Core.validateObject(object, fields)` __\[TODO\]__.
+-	Se añade `Core.HTMLStringToDOM(string)`.
+-	Se añade fn Created para `Core.alert(options)`.
 
 __Versión 3.0.0:__ Se rediseño por completo con el único objetivo que sea un framework basado únicamente en VanillaJS, se unio las cualidades de las versiones anteriores y optimalizando el código.
 
