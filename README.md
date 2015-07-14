@@ -10,8 +10,23 @@ __Versión 3.1.0_a:__ Se reorganiza los metodos por tipos de usos.
 -	Se crea el tipo utils,...
 -	Se incluye `Core.utils.forEach(ar, fn)`, para dar soporte en forEach en los objetos que sean tipo NodeList.
 
-__Versión 3.0.1:__ Se agregan una funcionalidades necesarias.
--	Se incluye `Core.forEach(ar, fn)`.
+__Versión 3.0.3:__ Se agregan una funcionalidades necesarias.
+-	Se corrigen varios errores:
+	-	Se corrige un error de validación `Core.parents(el, validate)`.
+	-	Se corrige un error al cerrar otras ventanas abiertas `Core.modals(settings, fnOpen, fnClose)`.
+	-	Se ajustan varios errores no funcionales `Core.autocomplete(input, array)`.
+-	Se desarrollan y se soluccionan un error `Core.calendar(input, options, selected)`:
+	-	Cambio de fechas con select
+	-	Callback cuando se realiza un cambio de fecha
+	-	Se solucciona error en posición del calendario al hacer focus.
+-	Se añade:
+	-	Metodo `Core.spinLoader()`.
+	-	Metodo `Core.calculateRatio(srcWidth, srcHeight, maxWidth, maxHeight)`.
+	-	Variable `Core.RADIANS`.
+	-	Metodo `Core.fileUpload(el, settings)`.
+-	Agregan dos funcionalidades a `Core.ajax(options, failed)`.
+	-	Callback cuando la validación JSON falla.
+	-	Desde ahora se puede añadir headers en la transacción.
 
 __Versión 3.0.2:__ Se agregan una funcionalidades necesarias.
 -	Se ajusta `Core.routes(routes, options)`.
@@ -26,9 +41,10 @@ __Versión 3.0.2:__ Se agregan una funcionalidades necesarias.
 	-	Correción de error en IE9 con el metodo `Core.ajax(options)`.
 	-	Se corrige error en la posición padding en `Core.autocomplete(input, array)`.
 	-	Se corrige errores en `Core.modals(settings, fnOpen, fnClose)`.
--	Se comenzo a realizar la validación con Array en `Core.validateObject(object, fields)` __\[TODO\]__.
--	Se añade `Core.HTMLStringToDOM(string)`.
--	Se añade fn Created para `Core.alert(options)`.
+-	Se comenzo a realizar la validación con Array en `Core.validateObject(object, fields)`
+
+__Versión 3.0.1:__ Se agregan una funcionalidades necesarias.
+-	Se incluye `Core.forEach(ar, fn)`.
 
 __Versión 3.0.0:__ Se rediseño por completo con el único objetivo que sea un framework basado únicamente en VanillaJS, se unio las cualidades de las versiones anteriores y optimalizando el código.
 
