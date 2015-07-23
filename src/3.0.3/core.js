@@ -359,6 +359,18 @@
 		return num.toString(16).substring(3);
 	};
 
+	Core.getIndex = function(children, child) {
+		if(!Core.isNodeList(children)) {
+			throw 'Children NodeList is required';
+		} else if(!Core.isElementHTML(child)) {
+			throw 'Child DOM is required';
+		}
+
+		var arr = Array.prototype.slice.call(children);
+
+		return arr.indexOf(child);
+	};
+
 	/**
 	 * Get parents DOM of child element.
 	 * @param  {HTMLElement} el       DOM element for search parent
@@ -881,6 +893,11 @@
 
 		var getSearch = function() {
 			var search = location.search;
+			
+			if(search.trim() == '') {
+				return;
+			}
+
 			search = search.substring(1);
 			search = search.split('&');
 
@@ -890,7 +907,7 @@
 				for (var i = 0, len = search.length; i < len; i++) {
 					var sl = search[i].split('=');
 
-					obj[sl[0]] = sl[1];
+					obj[sl[0]] = decodeURIComponent(sl[1]);
 				}
 
 				return obj;

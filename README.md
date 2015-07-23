@@ -15,18 +15,21 @@ __Versión 3.0.3:__ Se agregan una funcionalidades necesarias.
 	-	Se corrige un error de validación `Core.parents(el, validate)`.
 	-	Se corrige un error al cerrar otras ventanas abiertas `Core.modals(settings, fnOpen, fnClose)`.
 	-	Se ajustan varios errores no funcionales `Core.autocomplete(input, array)`.
+	-	Se ajustan varios errores de validación y decodificación de URL `Core.getDataURL()`
 -	Se desarrollan y se soluccionan un error `Core.calendar(input, options, selected)`:
 	-	Cambio de fechas con select
 	-	Callback cuando se realiza un cambio de fecha
 	-	Se solucciona error en posición del calendario al hacer focus.
+-	Agregan dos funcionalidades a `Core.ajax(options, failed)`.
+	-	Callback cuando la validación JSON falla.
+	-	Desde ahora se puede añadir headers en la transacción.
 -	Se añade:
 	-	Metodo `Core.spinLoader()`.
 	-	Metodo `Core.calculateRatio(srcWidth, srcHeight, maxWidth, maxHeight)`.
 	-	Variable `Core.RADIANS`.
 	-	Metodo `Core.fileUpload(el, settings)`.
--	Agregan dos funcionalidades a `Core.ajax(options, failed)`.
-	-	Callback cuando la validación JSON falla.
-	-	Desde ahora se puede añadir headers en la transacción.
+	-	Metodo `Core.paging(options, fnCallback)`.
+	-	Metodo `Core.getIndex(children, child)`.
 
 __Versión 3.0.2:__ Se agregan una funcionalidades necesarias.
 -	Se ajusta `Core.routes(routes, options)`.
