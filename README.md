@@ -11,6 +11,21 @@ __Versión 3.1.0_a:__ Se reorganiza los metodos por tipos de usos.
 -	Se incluye `Core.utils.forEach(ar, fn)`, para dar soporte en forEach en los objetos que sean tipo NodeList.
 
 __Versión 3.0.3:__ Se agregan una funcionalidades necesarias.
+-	Se desarrolla `Core.personalizeForm()`.
+-	Se desarrolla `Core.soundManager(audios, options)`.
+-	Se desarrolla `Core.preloadImages(fnProgress, fnEnded)`.
+-	Se realizan ajustes en `Core.routes()`:
+	-	Se aceptan parametros GET.
+	-	Se ajusta para que acepte y verifique varios PathNames.
+-	Se ajusta el metodo `Core.getDataURL()`, para que valide los parametros GET.
+-	Se desarrollan aditamentos para `Core.calendar()`, los cuales son:
+	-	Checkear días festivos.
+	-	Estilos para los domingos.
+	-	Agregar datos en el calendario.
+	-	Se pueden bloquear fechas del calendario.
+	-	
+
+__Versión 3.0.3:__ Se agregan una funcionalidades necesarias.
 -	Se corrigen varios errores:
 	-	Se corrige un error de validación `Core.parents(el, validate)`.
 	-	Se corrige un error al cerrar otras ventanas abiertas `Core.modals(settings, fnOpen, fnClose)`.
